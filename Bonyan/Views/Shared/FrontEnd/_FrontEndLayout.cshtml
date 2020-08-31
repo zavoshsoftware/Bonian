@@ -1,0 +1,79 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/admin-font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="profile-card">
+                <div class="rfloat"><i class="fa fa-2x fa-send-o"></i></div>
+                <div class="text-center">
+                    <a href="/home"><img src="~/images/logo.jpg" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-body">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 tabbar">
+                <div class="col-mb-3 menuitem" id="menuHome">
+                    <a href="/" class="active"><i class="fa fa-2x fa-home"></i></a>
+                </div>
+                <div class="col-mb-3 menuitem" id="menuSearch">
+                    <a href="/search"><i class="fa fa-2x fa-search"></i></a>
+                </div>
+                <div class="col-mb-3 menuitem" id="menuUser">
+                    <a href="/profile"><i class="fa fa-2x fa-user"></i></a>
+                </div>
+                <div class="col-mb-3 menuitem" id="menuAbout">
+                    <a href="/about"><i class="fa fa-2x fa-file"></i></a>
+                </div>
+                <div class="col-mb-3 menuitem" id="menuLike">
+                    <a href="/like"><i class="fa fa-2x fa-heart"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var URL = window.location.pathname;
+            if (URL.toLowerCase().includes('/home') || URL.toLowerCase().includes('/details') || URL.toLowerCase().includes('/author')) {
+                $('.menuitem a').removeClass('active');
+                $('#menuHome a').addClass('active');
+            }
+            else if (URL.toLowerCase().includes('/search')) {
+                $('.menuitem a').removeClass('active');
+                $('#menuSearch a').addClass('active');
+            }
+            else if (URL.toLowerCase().includes('/profile')) {
+                $('.menuitem a').removeClass('active');
+                $('#menuUser a').addClass('active');
+            }
+            else if (URL.toLowerCase().includes('/about')) {
+                $('.menuitem a').removeClass('active');
+                $('#menuAbout a').addClass('active');
+            }
+            else if (URL.toLowerCase().includes('/like')) {
+                $('.menuitem a').removeClass('active');
+                $('#menuLike a').addClass('active');
+            }
+        });
+    </script>
+</body>
+</html>

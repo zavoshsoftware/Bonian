@@ -1,0 +1,352 @@
+﻿body {
+}
+
+.tabbar {
+    position: fixed;
+    background: #fff;
+    padding: 0 10px;
+    bottom: 0;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.header {
+    position: fixed;
+    background: #000;
+    padding: 10px;
+    top: 0;
+    width: 100%;
+    min-height: 40px;
+}
+
+a {
+    color: #999;
+}
+
+.active {
+    color: #000;
+}
+
+.profile-card {
+    background: #000;
+    width: 100%;
+    text-align: right;
+    padding: 10px 20px;
+    height: 47px;
+    position: fixed;
+    color: #fff;
+    text-align:center;
+}
+
+    .profile-card:before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        border-top: 20px solid #fff;
+        border-right: 20px solid #000;
+        width: 0;
+    }
+
+.main-body {
+    min-height: 500px;
+    background: #fff;
+    width: 100%;
+    padding: 15px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+.gallery-ls {
+    padding: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+    .gallery-ls a {
+        color: #000;
+        font-size: 16px;
+        font-weight: 800;
+        border-bottom: 3px solid;
+    }
+
+    .gallery-ls img {
+        margin-top: 12px;
+        width: 100%;
+    }
+
+.gallery-detail img {
+    margin-bottom: 10px;
+}
+
+.gallery-detail a {
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+    border-bottom: 3px solid;
+}
+
+.color-silver {
+    color: silver;
+}
+
+.mrt10 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.mrt20 {
+    margin-top: 20px;
+}
+
+.price {
+    padding: 10px;
+    border: 1px solid #000;
+    width: 20%;
+}
+
+.btn-shopping {
+    padding: 10px;
+    width: 80%;
+    background: #000;
+    color: #fff;
+    border: none;
+}
+
+.author-title {
+    margin: 20px 0;
+    font-weight: 800;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.readmore {
+    color: #000;
+    font-size: 16px;
+}
+
+.gallery-detail .readmore {
+    text-align: center;
+}
+
+    .gallery-detail .readmore a {
+        font-weight: 600;
+        border-bottom: 2px solid #000;
+    }
+
+.rfloat {
+    float: right;
+}
+
+.gallery-detail img {
+    width: 100%;
+}
+
+.authorMain img {
+    width: 40%;
+    margin-bottom: 10px;
+}
+
+.authorMain a {
+    color: #000;
+    font-size: 16px;
+    font-weight: 800;
+    border-bottom: 3px solid;
+}
+
+.profile-name {
+    background: #000;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.profile-info {
+    padding: 5px 15px;
+    font-weight: 700;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.profile-info i {
+    margin-left: 5px;
+}
+
+.profile-main {
+    margin: 20px 0;
+}
+
+.profile-body {
+    margin: 30px 0px;
+}
+
+.user-extention {
+    margin: 20px 0;
+}
+
+    .user-extention img {
+        width: 100%;
+    }
+
+    .user-extention a {
+        color: #000;
+        font-size: 12px;
+        font-weight: 600;
+        border-bottom: 2px solid;
+    }
+
+.extention-price {
+    font-size: 12px;
+    color: silver;
+}
+
+.btn-default {
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    border: none;
+}
+
+.logout {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 40px;
+    padding-right: 50px;
+    padding-left: 50px;
+}
+
+input[type="submit"] {
+    margin-left: -50px;
+    height: 20px;
+    width: 50px;
+}
+
+.mrl30 {
+    margin-left: -30px;
+}
+
+.main-search {
+    margin: 50px 0;
+}
+
+    .main-search img {
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .main-search a {
+        font-size: 16px;
+        color: #000;
+        font-weight: 700;
+    }
+
+.margin-bottom15 {
+    margin-bottom: 15px;
+}
+
+.main-next {
+    height: 100px;
+    text-align: right;
+    direction: rtl;
+    padding: 0;
+}
+
+.next {
+    height: 100px;
+    background: #000;
+    color: #fff;
+    vertical-align: middle;
+    width: 20px;
+}
+
+    .next i {
+        margin-top: 28px;
+        padding: 4px;
+    }
+
+.mid-height {
+    height: 100px;
+}
+
+.no-padding {
+    padding: unset;
+}
+
+.carousel-item {
+    padding-right: 10px;
+}
+
+.like-list img {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.like-list {
+    margin: 60px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+    .text-center a {
+        color: #000;
+        font-size: 16px;
+        font-weight: 800;
+        border-bottom: 3px solid;
+    }
+
+.about {
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+}
+
+    .about h4 {
+        font-weight: 700;
+    }
+
+    .about .tab {
+        margin: 10px 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: silver;
+    }
+
+.description {
+    margin:20px 0;
+}
+
+    .description p {
+        text-align: justify;
+        color: silver;
+    }
+.active
+{
+    color:#000;
+}
+.lfloat
+{
+    float:left;
+}
+.tabbar div {
+    padding: 10px 0;
+    border-right: 1px solid #000;
+    text-align: center;
+}
+    .tabbar div:last-child {
+        border-right:unset;
+    }
+    .col-mb-3{
+        width:20%;
+        float:left;
+    }
