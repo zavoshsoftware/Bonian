@@ -1,4 +1,25 @@
-﻿body {
+﻿@font-face {
+    font-family: 'Blinker-Bold';
+    src: url('../fonts/blinker/Blinker-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Blinker-Regular';
+    src: url('../fonts/blinker/Blinker-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Blinker-SemiBold';
+    src: url('../fonts/blinker/Blinker-SemiBold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'DIN Alternate Bold';
+    src: url('../fonts/blinker/DIN Alternate Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'PowerChord';
+    src: url('../fonts/blinker/PowerChord.ttf') format('truetype');
+}
+body {
+    font-family: Blinker-Regular;
 }
 
 .tabbar {
@@ -31,8 +52,8 @@ a {
     background: #000;
     width: 100%;
     text-align: right;
-    padding: 10px 20px;
-    height: 47px;
+    padding: 1px 15px;
+    height: 33px;
     position: fixed;
     color: #fff;
     text-align:center;
@@ -60,7 +81,7 @@ a {
 
 .gallery-ls {
     padding: 5px;
-    margin-bottom: 15px;
+    /*margin-bottom: 15px;*/
     text-align: center;
 }
 
@@ -77,14 +98,16 @@ a {
     }
 
 .gallery-detail img {
-    margin-bottom: 10px;
+    margin-bottom: 6px;
 }
 
 .gallery-detail a {
     color: #000;
-    font-size: 16px;
-    font-weight: 800;
-    border-bottom: 3px solid;
+    font-size: 20px;
+    /*font-weight: 800;*/
+    border-bottom: 7px solid;
+    font-family: Blinker-Bold;
+    padding-bottom: 3px;
 }
 
 .color-silver {
@@ -101,22 +124,25 @@ a {
 }
 
 .price {
-    padding: 10px;
+    padding: 7px 10px;
     border: 1px solid #000;
     width: 20%;
+    font-family:Blinker-SemiBold;
 }
 
 .btn-shopping {
-    padding: 10px;
+    padding: 6px 10px;
     width: 80%;
     background: #000;
     color: #fff;
     border: none;
+    font-family: Blinker-SemiBold;
 }
 
 .author-title {
     margin: 20px 0;
-    font-weight: 800;
+    /*font-weight: 800;*/
+    font-family:Blinker-SemiBold;
 }
 
 .justify {
@@ -130,11 +156,15 @@ a {
 
 .gallery-detail .readmore {
     text-align: center;
+    font-family:Blinker-Regular;
 }
 
     .gallery-detail .readmore a {
-        font-weight: 600;
+        /*font-weight: 600;*/
         border-bottom: 2px solid #000;
+        font-family: Blinker-Regular;
+        font-size: 16px;
+        padding-bottom:unset;
     }
 
 .rfloat {
@@ -152,23 +182,25 @@ a {
 
 .authorMain a {
     color: #000;
-    font-size: 16px;
-    font-weight: 800;
+    font-size: 20px;
+    /*font-weight: 800;*/
+    font-family: Blinker-Bold;
     border-bottom: 3px solid;
 }
 
 .profile-name {
     background: #000;
     color: #fff;
-    padding: 10px;
+    padding:4px 10px;
     text-align: center;
-    font-weight: 700;
-    font-size: 16px;
+    /*font-weight: 700;*/
+    font-size: 18px;
+    font-family: Blinker-Bold;
 }
 
 .profile-info {
     padding: 5px 15px;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 
 .text-right {
@@ -198,7 +230,7 @@ a {
     .user-extention a {
         color: #000;
         font-size: 12px;
-        font-weight: 600;
+        font-family: Blinker-Bold;
         border-bottom: 2px solid;
     }
 
@@ -212,6 +244,8 @@ a {
     background: #000;
     color: #fff;
     border: none;
+    font-family: Blinker-Bold;
+    font-size: 18px;
 }
 
 .logout {
@@ -236,7 +270,7 @@ input[type="submit"] {
 }
 
 .main-search {
-    margin: 50px 0;
+    margin: 40px 0;
 }
 
     .main-search img {
@@ -247,7 +281,7 @@ input[type="submit"] {
     .main-search a {
         font-size: 16px;
         color: #000;
-        font-weight: 700;
+       font-family:Blinker-SemiBold;
     }
 
 .margin-bottom15 {
@@ -292,7 +326,7 @@ input[type="submit"] {
 }
 
 .like-list {
-    margin: 60px 0;
+    margin: 30px 0;
 }
 
 .text-center {
@@ -301,9 +335,9 @@ input[type="submit"] {
 
     .text-center a {
         color: #000;
-        font-size: 16px;
-        font-weight: 800;
-        border-bottom: 3px solid;
+        font-size: 18px;
+        font-family: Blinker-Bold;
+        border-bottom: 7px solid;
     }
 
 .about {
@@ -311,14 +345,14 @@ input[type="submit"] {
     margin-bottom: 20px;
 }
 
-    .about h4 {
+    /*.about h4 {
         font-weight: 700;
-    }
+    }*/
 
     .about .tab {
         margin: 10px 0;
         font-size: 18px;
-        font-weight: 700;
+        font-family: Blinker-SemiBold;
         color: silver;
     }
 
@@ -350,3 +384,20 @@ input[type="submit"] {
         width:20%;
         float:left;
     }
+.fa-telegram {
+    background-image: url('../images/telegram.jpg');
+}
+.mrt40 {
+    margin-top: 40px;
+}
+.mrb40 {
+    margin-bottom: 40px;
+}
+input[type="text"] {
+    height: 33px;
+    font-size: 16px;
+    font-family:Blinker-SemiBold;
+}
+.about h4
+{font-family:Blinker-SemiBold;
+}
