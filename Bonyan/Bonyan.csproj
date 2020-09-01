@@ -95,10 +95,16 @@
     <Content Include="Content\style.css" />
     <Content Include="fonts\fontAwesome\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\file.png" />
     <Content Include="images\gallery01.jpg" />
     <Content Include="images\gallery02.jpg" />
+    <Content Include="images\heart.png" />
+    <Content Include="images\home.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\search.png" />
+    <Content Include="images\telegram.jpg" />
+    <Content Include="images\user.png" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -117,6 +123,12 @@
     <Content Include="fonts\fontAwesome\fontawesome-webfont.woff" />
     <Content Include="fonts\fontAwesome\fontawesome-webfont.woff2" />
     <Content Include="fonts\fontAwesome\FontAwesome.otf" />
+    <Content Include="fonts\blinker\Blinker-Bold.ttf" />
+    <Content Include="fonts\blinker\Blinker-ExtraBold.ttf" />
+    <Content Include="fonts\blinker\Blinker-Regular.ttf" />
+    <Content Include="fonts\blinker\Blinker-SemiBold.ttf" />
+    <Content Include="fonts\blinker\DIN Alternate Bold.ttf" />
+    <Content Include="fonts\blinker\PowerChord.ttf" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\FrontEnd\_FrontEndLayout.cshtml" />
