@@ -46,9 +46,11 @@ namespace Models
         [Display(Name = "تاریخ تولد")]
         public DateTime? BirthDate { get; set; }
 
+        [Display(Name = "نقش کاربر")]
         public Guid RoleId { get; set; }
 
         public virtual Role Role { get; set; }
+        [Display(Name = "جنسیت")]
         public Guid? GenderId { get; set; }
 
         public virtual Gender Gender { get; set; }

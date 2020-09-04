@@ -55,7 +55,7 @@ namespace Models
         [Display(Name="سال خلق اثر")]
         public int CreateYear { get; set; }
 
-        [Display(Name = "LikeNumber")]
+        [Display(Name = "تعداد لایک")]
         public int? LikeNumber { get; set; }
 
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }

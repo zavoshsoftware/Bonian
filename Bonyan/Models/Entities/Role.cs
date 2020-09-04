@@ -14,7 +14,7 @@ namespace Models
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "RoleTitle", ResourceType = typeof(Resources.Models.Role))]
+        [Display(Name = "‰ﬁ‘ ò«—»—")]
         public string Title { get; set; }
 
         [Required]

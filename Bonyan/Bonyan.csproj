@@ -653,13 +653,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ArtistsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductGroupsController.cs" />
+    <Compile Include="Controllers\ProductImagesController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\BaseViewModelHelper.cs" />
+    <Compile Include="Helpers\CodeCreator.cs" />
+    <Compile Include="Helpers\PersianCulture.cs" />
     <Compile Include="Migrations\202009020953335_V01.cs" />
     <Compile Include="Migrations\202009020953335_V01.designer.cs">
       <DependentUpon>202009020953335_V01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009041615480_V02.cs" />
+    <Compile Include="Migrations\202009041615480_V02.designer.cs">
+      <DependentUpon>202009041615480_V02.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009041618130_V03.cs" />
+    <Compile Include="Migrations\202009041618130_V03.designer.cs">
+      <DependentUpon>202009041618130_V03.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
@@ -941,6 +957,45 @@
     <Content Include="Scripts\kendo\2017.3.913\kendo.window.min.js.map" />
     <Content Include="Views\Shared\BackEndLayout\_BackEndLayout.cshtml" />
     <Content Include="Views\Shared\BackEndLayout\_MenuPartial.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
+    <Content Include="Views\ProductGroups\Create.cshtml" />
+    <Content Include="Views\ProductGroups\Delete.cshtml" />
+    <Content Include="Views\ProductGroups\Details.cshtml" />
+    <Content Include="Views\ProductGroups\Edit.cshtml" />
+    <Content Include="Views\ProductGroups\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Artists\Create.cshtml" />
+    <Content Include="Views\Artists\Delete.cshtml" />
+    <Content Include="Views\Artists\Details.cshtml" />
+    <Content Include="Views\Artists\Edit.cshtml" />
+    <Content Include="Views\Artists\Index.cshtml" />
+    <Content Include="Views\ProductImages\Create.cshtml" />
+    <Content Include="Views\ProductImages\Delete.cshtml" />
+    <Content Include="Views\ProductImages\Edit.cshtml" />
+    <Content Include="Views\ProductImages\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RichText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Email.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\RichText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -950,6 +1005,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\product\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
@@ -961,6 +1017,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202009020953335_V01.resx">
       <DependentUpon>202009020953335_V01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041615480_V02.resx">
+      <DependentUpon>202009041615480_V02.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009041618130_V03.resx">
+      <DependentUpon>202009041618130_V03.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
