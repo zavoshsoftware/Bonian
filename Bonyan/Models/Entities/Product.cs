@@ -78,5 +78,10 @@ namespace Models
         {
             get { return Amount.ToString("N0"); }
         }
+
+        Helpers.GetCulture oGetCulture = new Helpers.GetCulture();
+
+      
+
     }
 }

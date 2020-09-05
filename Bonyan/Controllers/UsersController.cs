@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Models;
+using ViewModels;
+using System.Text.RegularExpressions;
 
 namespace Bonyan.Controllers
 {
@@ -21,19 +23,30 @@ namespace Bonyan.Controllers
             return View(users.ToList());
         }
 
-        // GET: Users/Details/5
-        public ActionResult Details(Guid? id)
-        {
-            if (id == null)
+        [Route("userprofile")]
+        public ActionResult Details()
+        { 
+            if(!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/login");
+            }
+            string cellNum = User.Identity.Name;
+           
+            if (cellNum == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.Users.Find(id);
+            User user = db.Users.Where(current => current.IsActive && !current.IsDeleted && current.CellNum == cellNum).FirstOrDefault();
             if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(user);
+            UserProfileViewModel userProfile = new UserProfileViewModel()
+            {
+                User = user,
+                UserProductsLikes = db.UserProductsLikes.Where(current=>current.IsActive && !current.IsDeleted && current.UserId == user.Id).ToList()
+            };
+            return View(userProfile);
         }
 
         // GET: Users/Create
@@ -137,6 +150,48 @@ namespace Bonyan.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        public ActionResult EditProfile(string fulname,string email,string celnum,string password,string id)
+        {
+            try
+            {
+                Guid userId = new Guid(id);
+                User user = db.Users.Find(userId);
+                if (!string.IsNullOrEmpty(fulname))
+                {
+                    user.FullName = fulname;
+                }
+                else if (!string.IsNullOrEmpty(email))
+                {
+                    bool isEmail = Regex.IsMatch(email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+
+                    if (!isEmail)
+                        return Json("InvalidEmail", JsonRequestBehavior.AllowGet);
+                    user.Email = email;
+                }
+                else if (!string.IsNullOrEmpty(celnum))
+                {
+                    user.CellNum = celnum;
+                }
+                else if (!string.IsNullOrEmpty(password))
+                {
+                    user.Password = password;
+                }
+
+                user.IsDeleted = false;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return Json("true", JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+
+                return Json("false", JsonRequestBehavior.AllowGet);
+            }
+           
         }
     }
 }

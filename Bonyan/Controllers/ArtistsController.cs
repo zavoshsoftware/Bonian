@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Models;
+using ViewModels;
 
 namespace Bonyan.Controllers
 {
@@ -18,19 +19,24 @@ namespace Bonyan.Controllers
         {
             return View(db.Artists.Where(a=>a.IsDeleted==false).OrderByDescending(a=>a.CreationDate).ToList());
         }
-
-        public ActionResult Details(Guid? id)
+        [Route("artist/{code:int?}")]
+        public ActionResult Details(int? code)
         {
-            if (id == null)
+            if (code == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artist artist = db.Artists.Find(id);
-            if (artist == null)
+            Product product = db.Products.Where(current=>current.IsActive && !current.IsDeleted && current.Code == code).FirstOrDefault();
+            if (product == null)
             {
                 return HttpNotFound();
             }
-            return View(artist);
+            ArtistDetailViewModel artistViewModel = new ArtistDetailViewModel()
+            {
+                Artist = db.Artists.Find(product.ArtistId),
+                Product = product
+            };
+            return View(artistViewModel);
         }
 
         public ActionResult Create()

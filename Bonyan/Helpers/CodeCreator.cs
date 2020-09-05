@@ -36,6 +36,18 @@ namespace Eshop.Helpers
                 return 30000;
             }
         }
+        public static int ReturnProductCode()
+        {
 
+            Product product = db.Products.OrderByDescending(current => current.Code).FirstOrDefault();
+            if (product != null)
+            {
+                return product.Code + 1;
+            }
+            else
+            {
+                return 1000;
+            }
+        }
     }
 }

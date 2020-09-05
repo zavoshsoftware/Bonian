@@ -1,155 +1,62 @@
-﻿@model Models.Product
-
+﻿@model ViewModels.ProductDetailViewModel
 @{
     ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+    Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Product</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Artist.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Artist.FullName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductGroup.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductGroup.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Order)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Order)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Width)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Width)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Height)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Height)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreateYear)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreateYear)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LikeNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LikeNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletionDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletionDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+<div class="gallery-detail">
+    <img src="@Model.Product.ImageUrl" />
+    <a href="/artist/@Model.Product.Code">@Model.Product.Artist.FullNameSrt</a>
+    <span class="rfloat">
+        @if (!Model.IsLike)
+        {
+            <i class="fa fa-2x fa-heart-o" onclick="LikeProduct('true');"></i>
+        }
+        else
+        {
+            <i class="fa fa-2x fa-heart color-red" onclick="LikeProduct('false');"></i>
+        }
+    </span>
+    <p class="color-silver mrt10"><span>@Model.Product.Width x @Model.Product.Height / @Model.Product.CreateYear</span></p>
+    <p class="color-silver">@Model.Product.ProductGroup.TitleSrt</p>
+    <div class="mrt40 mrb40 detail-height">
+        <div class="price">@Model.Product.AmountStr</div>
+        <button class="btn-shopping">@Resources.Label.Buy</button>
+    </div>
+    <h4 class="author-title">@Model.Product.Artist.FullNameSrt</h4>
+    <p class="color-silver justify">@Model.Product.Artist.SummerySrt</p>
+    <div class="readmore"><a href="/artist/@Model.Product.Code">@Resources.Label.More</a></div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@section scripts{
+    <script>
+    function LikeProduct(isLike)
+    {
+
+        $.ajax({
+            data: { id:'@Model.Product.Id',islike: isLike },
+            url: '/products/LikeDisLikeProduct',
+            type: 'POST'
+        }).done(function (result) {
+
+            if (result == "false")
+            {
+                alert("error");
+            }
+            else {
+                if (isLike == 'true') {
+                    $(this).removeClass("fa-heart-o");
+                    $(this).addClass("fa-heart");
+                    $(this).addClass("red-color");
+                }
+                else {
+                    $(this).removeClass("fa-heart");
+                    $(this).addClass("fa-heart-o");
+                    $(this).removeClass("red-color");
+                }
+                window.location.reload();
+            }
+
+        });
+    }
+    </script>
+}

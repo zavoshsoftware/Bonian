@@ -1,4 +1,4 @@
-namespace Models
+ï»¿namespace Models
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -14,7 +14,7 @@ namespace Models
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "äÞÔ ˜ÇÑÈÑ")]
+        [Display(Name = "Ù†Ù‚Ø´ Ú©Ø§Ø±Ø¨Ø±")]
         public string Title { get; set; }
 
         [Required]

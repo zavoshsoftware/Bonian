@@ -46,7 +46,7 @@
                     </a>
                 </div>
                 <div class="col-mb-3 menuitem" id="menuUser">
-                    <a href="/profile">
+                    <a href="/userprofile">
                         <img src="~/images/user.png" />
                     @*<i class="fa fa-2x fa-user"></i>*@
                     </a>
@@ -68,6 +68,7 @@
     </div>
 
     <script src="~/Scripts/jquery-3.1.0.min.js"></script>
+    @RenderSection("scripts", required: false)
     <script type="text/javascript">
         $(document).ready(function () {
             var URL = window.location.pathname;

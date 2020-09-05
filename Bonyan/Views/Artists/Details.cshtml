@@ -1,115 +1,13 @@
-﻿@model Models.Artist
-
+﻿@model ViewModels.ArtistDetailViewModel
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+    ViewBag.Title = Model.Artist.FullName;
+    Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="authorMain">
+    <div>  <img src="@Model.Product.ImageUrl" /></div>
+    <a href="#">@Model.Artist.FullNameSrt</a>
+    <p class="mrt10 justify color-silver">@Html.Raw(Model.Artist.AboutSrt)</p>
 
-<div>
-    <h4>Artist</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Summery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Summery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.About)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.About)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FullNameEn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FullNameEn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SummeryEn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SummeryEn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AboutEn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AboutEn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletionDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletionDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

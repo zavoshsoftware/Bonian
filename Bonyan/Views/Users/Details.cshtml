@@ -1,131 +1,155 @@
-﻿@model Models.User
+﻿@model ViewModels.UserProfileViewModel
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
+<div class="profile-body">
+    <div class="profile-name">@Model.User.FullName</div>
+    <div class="profile-main">
+        <div>
+            <p class="alert alert-success" id="comment-succes">@Resources.Label.SuccessChange</p>
+            <p class="alert alert-danger" id="comment-reject"></p>
 
-<h2>Details</h2>
-
-<div>
-    <h4>User</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gender.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Role.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Role.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CellNum)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CellNum)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsActive)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastModifiedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastModifiedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsDeleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletionDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletionDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-    </dl>
+        </div>
+        <div class="row profile-info">
+            <div class="col-xs-4">Fulname</div>
+            <div class="col-xs-8 text-right">
+                <input class="profile-input" value="@Model.User.FullName" disabled id="pro_fulname" />
+                <i class="fa fa-pencil" onclick="EnableEdit('pro_fulname');"></i>
+                <div class="hd-field mrg-right20" id="hd_fulname">
+                    <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('fulname');"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('fulname');"><i class="fa fa-close"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row profile-info">
+            <div class="col-xs-4">Email</div>
+            <div class="col-xs-8 text-right">
+            @*@Model.User.Email<i class="fa fa-pencil"></i>*@
+                <input class="profile-input" value="@Model.User.Email" disabled id="pro_email" />
+                <i class="fa fa-pencil" onclick="EnableEdit('pro_email');"></i>
+                <div class="hd-field mrg-right20" id="hd_email">
+                    <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('email');"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('email');"><i class="fa fa-close"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row profile-info">
+            <div class="col-xs-4">Phone</div>
+            <div class="col-xs-8 text-right">
+            @*@Model.User.CellNum<i class="fa fa-pencil"></i>*@
+                <input class="profile-input mrg-right19" value="@Model.User.CellNum" disabled id="pro_celnum" />
+                @*<i class="fa fa-pencil" onclick="EnableEdit('pro_celnum');"></i>*@
+                @*<div class="hd-field mrg-right20" id="hd_celnum">
+                    <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('celnum');"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('celnum');"><i class="fa fa-close"></i></button>
+                </div>*@
+            </div>
+        </div>
+        <div class="row profile-info">
+            <div class="col-xs-4">Password</div>
+            <div class="col-xs-8 text-right">
+            @*Change Password<i class="fa fa-pencil"></i>*@
+                <input class="profile-input" value="@Model.User.Password" disabled id="pro_password" type="password" />
+                <i class="fa fa-pencil" onclick="EnableEdit('pro_password');"></i>
+                <div class="hd-field mrg-right20" id="hd_password">
+                    <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('password');"><i class="fa fa-check"></i></button>
+                    <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('password');"><i class="fa fa-close"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profile-name">Favorits | Save | Follows</div>
+    <div class="user-extention">
+        <div class="row">
+            @foreach (var like in Model.UserProductsLikes)
+            {
+                <div class="col-xs-4">
+                    <img src="@like.Product.ImageUrl" />
+                    <a href="/artist/@like.Product.Code">@like.Product.Artist.FullNameSrt</a>
+                    <p class="extention-price">@like.Product.AmountStr</p>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="logout"><a href="/account/LogOff" class="btn-default">Log out</a></div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@section scripts{
+    <script>
+        function EnableEdit(id) {
+            $("#" + id).removeAttr("disabled");
+            $("#" + id).css('border', '1px solid #000');
+            $("#" + id).focus();
+            var btnDivIdSplit = id.split('_')[1];
+            btnDivId = '#hd_' + btnDivIdSplit;
+            $(btnDivId).css('display', 'block');
+        }
+        function CancelEdit(id)
+        {
+            var inputId = 'pro_' + id;
+            var controlerId = 'hd_' + id;
+
+            $("#" + inputId).attr("disabled");
+            $("#" + inputId).css('border', 'none');
+
+            $("#" +controlerId).css('display', 'none');
+        }
+        function SaveEdit(type) {
+            var inputId = 'pro_' + type;
+            var controlerId = 'hd_' + type;
+
+            var value = $("#" + inputId).val();
+
+            var fulnameVal = '';
+            var emailVal = '';
+            var celnumVal = '';
+            var passwordVal = '';
+
+            if (type === 'fulname')
+            {
+                fulnameVal = value;
+            }
+            else if (type === 'email') {
+                emailVal = value;
+            }
+            else if (type === 'celnum') {
+                celnumVal = value;
+            }
+            else if (type === 'password') {
+                passwordVal = value;
+            }
+
+            if (fulnameVal !== "" || emailVal !== "" || celnumVal !== "" || passwordVal !== "") {
+                $.ajax(
+                    {
+                        url: "/users/EditProfile",
+                        data: { fulname: fulnameVal, email: emailVal, celnum: celnumVal, password: passwordVal,id:'@Model.User.Id' },
+                        type: "POST"
+
+                    }).done(function (result) {
+                        if (result === "true") {
+                            $("#comment-reject").css('display', 'none');
+                            $("#comment-succes").css('display', 'block');
+                            CancelEdit(type);
+                        }
+                        else if (result === "InvalidEmail") {
+                            $("#comment-reject").html('@Resources.Label.InvalidEmail.');
+                            $("#comment-reject").css('display', 'block');
+                            $("#comment-succes").css('display', 'none');
+                        }
+                        else if (result === "false") {
+                            $("#comment-reject").html('@Resources.Label.Error.');
+                            $("#comment-reject").css('display', 'block');
+                            $("#comment-succes").css('display', 'none');
+                        }
+                    });
+            }
+            else {
+                $("#comment-reject").html('@Resources.Label.Error');
+                $("#comment-reject").css('display', 'block');
+                $("#comment-succes").css('display', 'none');
+            }
+        }
+    </script>
+}

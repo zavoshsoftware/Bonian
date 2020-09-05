@@ -1,21 +1,42 @@
-﻿
+﻿@model ViewModels.AboutViewModel
 @{
     ViewBag.Title = "About";
     Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
 
 <div class="text-center about row">
-    <h4>About Bonian</h4>
-    <div class="tab">Buy From Bonian</div>
-    <div class="tab">Bonian Mag</div>
-    <div class="tab">Archive</div>
+    <div class="tab tablinks active" onclick="openCity(event, '@Model.AboutTexts.FirstOrDefault().Id')" id="defaultOpen">@Model.AboutTexts.FirstOrDefault().TitleSrt</div>
+    @foreach (var text in Model.AboutTexts.Skip(1))
+    {
+        <div class="tab tablinks" onclick="openCity(event, '@text.Id')">@text.TitleSrt</div>
+    }
+
 </div>
 <div>
-    <div class="profile-name">About Bonian</div>
-    <div class="description">
-        <p>The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.</p>
-        <p>The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.</p>
-        <p>The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.The description is in this section.</p>
-
-    </div>
+    @foreach (var text in Model.AboutTexts)
+    {
+        <div id="@text.Id" class="tabcontent">
+            <div class="profile-name">@text.TitleSrt</div>
+            <div class="description">@Html.Raw(text.BodySrt)</div>
+        </div>
+    }
 </div>
+@section scripts{
+    <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+</script>}

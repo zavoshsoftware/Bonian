@@ -51,5 +51,60 @@ namespace Models
                 HasRequired(p => p.TextType).WithMany(j => j.Texts).HasForeignKey(p => p.TextTypeId);
             }
         }
+
+        Helpers.GetCulture oGetCulture = new Helpers.GetCulture();
+
+        [NotMapped]
+        public string TitleSrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.TitleEn;
+                    case "fa-ir":
+                        return this.Title;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
+        [NotMapped]
+        public string SummerySrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.SummeryEn;
+                    case "fa-ir":
+                        return this.Summery;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
+
+        [NotMapped]
+        public string BodySrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.BodyEn;
+                    case "fa-ir":
+                        return this.Body;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
     }
 }

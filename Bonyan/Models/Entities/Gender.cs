@@ -21,5 +21,26 @@
         public string TitleEn { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+
+        Helpers.GetCulture oGetCulture = new Helpers.GetCulture();
+
+        [NotMapped]
+        public string TitleSrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.TitleEn;
+                    case "fa-ir":
+                        return this.Title;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
+
     }
 }

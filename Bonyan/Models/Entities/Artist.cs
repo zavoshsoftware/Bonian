@@ -44,5 +44,62 @@ namespace Models
         public string AboutEn { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+
+
+        Helpers.GetCulture oGetCulture = new Helpers.GetCulture();
+
+        [NotMapped]
+        public string FullNameSrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.FullNameEn;
+                    case "fa-ir":
+                        return this.FullName;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
+
+        [NotMapped]
+        public string SummerySrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.SummeryEn;
+                    case "fa-ir":
+                        return this.Summery;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
+
+        [NotMapped]
+        public string AboutSrt
+        {
+            get
+            {
+                string currentCulture = oGetCulture.CurrentLang();
+                switch (currentCulture.ToLower())
+                {
+                    case "en-us":
+                        return this.AboutEn;
+                    case "fa-ir":
+                        return this.About;
+                    default:
+                        return String.Empty;
+                }
+            }
+        }
     }
 }
