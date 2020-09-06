@@ -19,6 +19,8 @@ namespace Bonyan.Controllers
         {
             return View(db.Artists.Where(a=>a.IsDeleted==false).OrderByDescending(a=>a.CreationDate).ToList());
         }
+
+        [Authorize(Roles = "customer")]
         [Route("artist/{code:int?}")]
         public ActionResult Details(int? code)
         {

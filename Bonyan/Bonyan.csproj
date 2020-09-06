@@ -696,6 +696,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistsController.cs" />
+    <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductGroupsController.cs" />
     <Compile Include="Controllers\ProductImagesController.cs" />
@@ -722,6 +723,10 @@
     <Compile Include="Migrations\202009041618130_V03.designer.cs">
       <DependentUpon>202009041618130_V03.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009060835316_V04.cs" />
+    <Compile Include="Migrations\202009060835316_V04.designer.cs">
+      <DependentUpon>202009060835316_V04.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\DatabaseContextInitializer.cs" />
@@ -729,6 +734,7 @@
     <Compile Include="Models\Entities\ActivationCode.cs" />
     <Compile Include="Models\Entities\Artist.cs" />
     <Compile Include="Models\Entities\BaseEntity.cs" />
+    <Compile Include="Models\Entities\Blog.cs" />
     <Compile Include="Models\Entities\City.cs" />
     <Compile Include="Models\Entities\Gender.cs" />
     <Compile Include="Models\Entities\Message.cs" />
@@ -747,6 +753,7 @@
     <Compile Include="Models\Entities\ZarinpallAuthority.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\BlogDetailViewModel.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="ViewModels\ArtistDetailViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
@@ -1060,6 +1067,11 @@
     <Content Include="Views\Texts\Details.cshtml" />
     <Content Include="Views\Texts\Edit.cshtml" />
     <Content Include="Views\Texts\Index.cshtml" />
+    <Content Include="Views\Blogs\Create.cshtml" />
+    <Content Include="Views\Blogs\Delete.cshtml" />
+    <Content Include="Views\Blogs\Details.cshtml" />
+    <Content Include="Views\Blogs\Edit.cshtml" />
+    <Content Include="Views\Blogs\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1069,6 +1081,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\blog\" />
     <Folder Include="Uploads\product\" />
     <Folder Include="Uploads\text\" />
   </ItemGroup>
@@ -1087,6 +1100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009041618130_V03.resx">
       <DependentUpon>202009041618130_V03.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009060835316_V04.resx">
+      <DependentUpon>202009060835316_V04.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

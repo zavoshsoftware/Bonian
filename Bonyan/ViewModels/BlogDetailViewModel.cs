@@ -6,8 +6,9 @@ using Models;
 
 namespace ViewModels
 {
-    public class BlogDetailViewModel
+    public class AboutViewModel
     {
-        public Blog Blog { get; set; }
+        public List<Text> AboutTexts { get; set; }
+        public List<Blog> Blogs { get; set; }
     }
 }

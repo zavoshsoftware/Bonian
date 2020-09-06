@@ -1,0 +1,19 @@
+﻿@model ViewModels.BlogDetailViewModel
+@{
+	Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
+	ViewBag.Title = Model.Blog.TitleSrt;
+}
+
+
+<div class="blog-detail">
+	 
+<div class="blog-detail-title">@Model.Blog.TitleSrt</div>
+	<div class="blog-detail-img">
+		<img src="@Model.Blog.ImageUrl" class="img-responsive"/>
+	</div>
+	<div class="blog-detail-body">
+		@Html.Raw(Model.Blog.BodySrt)
+	</div>
+	 
+</div>
+

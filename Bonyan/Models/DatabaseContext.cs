@@ -28,5 +28,7 @@ namespace Models
         public DbSet<Message> Messages { get; set; }
         public DbSet<MessageStatus> MessageStatuses { get; set; }
         public DbSet<UserProductsLike> UserProductsLikes { get; set; }
+
+        public System.Data.Entity.DbSet<Models.Blog> Blogs { get; set; }
     }
 }

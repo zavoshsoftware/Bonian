@@ -23,7 +23,7 @@ namespace Bonyan.Controllers
             return View(products.ToList());
         }
         [Route("product/{code:int?}")]
-        // GET: Products/Details/5
+        [Authorize(Roles = "customer")]
         public ActionResult Details(int? code)
         {
             if (code == null)

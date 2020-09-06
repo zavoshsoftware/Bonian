@@ -23,6 +23,20 @@ namespace Eshop.Helpers
             }
         }
 
+        public static int ReturnBlogCode()
+        {
+
+            Blog blog = db.Blogs.OrderByDescending(current => current.Code).FirstOrDefault();
+            if (blog != null)
+            {
+                return blog.Code + 1;
+            }
+            else
+            {
+                return 100;
+            }
+        }
+
         public static int ReturnOrderCode()
         {
 

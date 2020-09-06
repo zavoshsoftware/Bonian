@@ -11,6 +11,7 @@ namespace Bonyan.Controllers
     public class HomeController : Controller
     { DatabaseContext db = new DatabaseContext();
         // GET: Home
+        [Authorize(Roles = "customer")]
         [Route("")]
         public ActionResult Index()
         {
@@ -74,6 +75,7 @@ namespace Bonyan.Controllers
             return View();
         }
         [Route("about")]
+        [Authorize(Roles = "customer")]
         public ActionResult About()
         {
             if (!Request.Browser.IsMobileDevice)
@@ -82,7 +84,10 @@ namespace Bonyan.Controllers
             }
             AboutViewModel about = new AboutViewModel()
             {
-                AboutTexts = db.Texts.Where(current => current.TextType.Name == "abouttexts" && current.IsActive && !current.IsDeleted).ToList()
+                AboutTexts = db.Texts.Where(current =>
+                    current.TextType.Name == "abouttexts" && current.IsActive && !current.IsDeleted).ToList(),
+
+                Blogs = db.Blogs.Where(c => c.IsDeleted == false && c.IsActive).OrderByDescending(c => c.Order).ToList()
             };
             return View(about);
         }

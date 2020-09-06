@@ -20,7 +20,7 @@ namespace Models
         {
             InsertRole("5ddf1dee-cae1-44cc-8ed7-09ec28f7bbf8", "superadministrator", "راهبر ویژه", databaseContext);
             InsertRole("80322f1e-8192-4c62-a826-edd9912fd4c9", "administrator", "راهبر", databaseContext);
-            InsertRole("84e7e52e-2f40-4c35-8f17-360c90835906", "customet", "مشتری", databaseContext);
+            InsertRole("84e7e52e-2f40-4c35-8f17-360c90835906", "customer", "مشتری", databaseContext);
         }
 
         public static void InsertRole(string roleId, string roleName, string roleTitle, DatabaseContext databaseContext)

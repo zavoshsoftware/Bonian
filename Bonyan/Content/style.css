@@ -472,3 +472,26 @@ input[type="text"] {
 .mrg-right19{
     margin-right:19px;
 }
+
+.mag-item {
+    direction: rtl;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+    .mag-item .mag-title {
+        margin-top: 5px;
+    }
+    .mag-item .mag-title a{
+        color: #000;
+    }
+
+.blog-detail {
+    direction: rtl;
+    text-align: center;
+}
+    .blog-detail .blog-detail-title {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }

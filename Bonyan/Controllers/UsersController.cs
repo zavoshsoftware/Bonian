@@ -24,6 +24,7 @@ namespace Bonyan.Controllers
         }
 
         [Route("userprofile")]
+        [Authorize(Roles = "customer")]
         public ActionResult Details()
         { 
             if(!User.Identity.IsAuthenticated)

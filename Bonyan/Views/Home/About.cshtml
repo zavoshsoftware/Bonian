@@ -5,21 +5,59 @@
 }
 
 <div class="text-center about row">
-    <div class="tab tablinks active" onclick="openCity(event, '@Model.AboutTexts.FirstOrDefault().Id')" id="defaultOpen">@Model.AboutTexts.FirstOrDefault().TitleSrt</div>
-    @foreach (var text in Model.AboutTexts.Skip(1))
-    {
-        <div class="tab tablinks" onclick="openCity(event, '@text.Id')">@text.TitleSrt</div>
-    }
+    <div class="tab tablinks active" onclick="openCity(event, 'about')" id="defaultOpen">@Model.AboutTexts.FirstOrDefault().TitleSrt</div>
+  
+    <div class="tab tablinks" onclick="openCity(event, 'mag')">@Model.AboutTexts.Skip(1).FirstOrDefault().TitleSrt</div>
+    <div class="tab tablinks" onclick="openCity(event, 'archive')">@Model.AboutTexts.Skip(2).FirstOrDefault().TitleSrt</div>
+    <div class="tab tablinks" onclick="openCity(event, 'buy')">@Model.AboutTexts.Skip(3).FirstOrDefault().TitleSrt</div>
+   
 
 </div>
 <div>
-    @foreach (var text in Model.AboutTexts)
-    {
-        <div id="@text.Id" class="tabcontent">
-            <div class="profile-name">@text.TitleSrt</div>
-            <div class="description">@Html.Raw(text.BodySrt)</div>
+ 
+        <div id="about" class="tabcontent">
+            <div class="profile-name">@Model.AboutTexts.FirstOrDefault().TitleSrt</div>
+            <div class="description">@Html.Raw(Model.AboutTexts.FirstOrDefault().BodySrt)</div>
         </div>
-    }
+   
+        <div id="mag" class="tabcontent">
+            <div class="profile-name">@Model.AboutTexts.Skip(1).FirstOrDefault().TitleSrt</div>
+	        <div class="description">
+		        
+		        <div class="row">
+			        @foreach (var blog in Model.Blogs)
+			        {
+				        <div class="col-xs-12 mag-item">
+					        <div class="mag-img">
+						        <a href="/blog/@blog.Code">
+							        <img src="@blog.ImageUrl" class="img-responsive"/>
+						        </a>
+					        </div>
+					        <div class="mag-title">
+						        <a href="/blog/@blog.Code">
+							        @blog.TitleSrt
+						        </a>
+					        </div>
+				        </div>
+			        }
+		        </div>
+
+	        </div>
+        </div>
+   
+   
+        <div id="archive" class="tabcontent">
+            <div class="profile-name">@Model.AboutTexts.Skip(2).FirstOrDefault().TitleSrt</div>
+	        <div class="description">@Html.Raw(Model.AboutTexts.Skip(2).FirstOrDefault().BodySrt)</div>
+
+        </div>
+   
+   
+        <div id="buy" class="tabcontent">
+            <div class="profile-name">@Model.AboutTexts.Skip(3).FirstOrDefault().TitleSrt</div>
+            <div class="description">@Html.Raw(Model.AboutTexts.Skip(3).FirstOrDefault().BodySrt)</div>
+        </div>
+   
 </div>
 @section scripts{
     <script>

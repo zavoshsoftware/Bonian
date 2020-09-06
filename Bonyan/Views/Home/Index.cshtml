@@ -1,7 +1,7 @@
 ﻿@model ViewModels.HomeViewModel
 @{
     Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
-    ViewBag.Title = "Home";
+    ViewBag.Title = "Bonian foundation";
 }
 
 
@@ -9,22 +9,9 @@
     @foreach (var product in Model.Products)
     {
         <div class="gallery-ls">
-            <a href="/artist/@product.Code">@product.Artist.FullNameSrt</a>
+            <a href="/product/@product.Code">@product.Artist.FullNameSrt</a>
             <a href="/product/@product.Code"><img src="@product.ImageUrl" /></a>
         </div>
-    }
-    
-    @*<div class="gallery-ls">
-        <a href="/author">Vahid Chamani</a>
-        <a href="/Details"><img src="~/images/gallery02.jpg" /></a>
-    </div>
-    <div class="gallery-ls">
-        <a href="/author">Vahid Chamani</a>
-        <a href="/Details"><img src="~/images/gallery01.jpg" /></a>
-    </div>
-    <div class="gallery-ls">
-        <a href="/author">Vahid Chamani</a>
-        <a href="/Details"><img src="~/images/gallery02.jpg" /></a>
-    </div>*@
+    } 
 </div>
 
