@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ثبت سوال.
+        /// </summary>
+        public static string askQuestion {
+            get {
+                return ResourceManager.GetString("askQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to متن سوال.
+        /// </summary>
+        public static string body {
+            get {
+                return ResourceManager.GetString("body", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to خرید.
         /// </summary>
         public static string Buy {
@@ -97,6 +115,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to لیست سوالات.
+        /// </summary>
+        public static string MessageList {
+            get {
+                return ResourceManager.GetString("MessageList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to بیشتر.
         /// </summary>
         public static string More {
@@ -111,6 +138,15 @@ namespace Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to موضوع.
+        /// </summary>
+        public static string subject {
+            get {
+                return ResourceManager.GetString("subject", resourceCulture);
             }
         }
         

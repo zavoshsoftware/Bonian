@@ -66,8 +66,8 @@
             @foreach (var like in Model.UserProductsLikes)
             {
                 <div class="col-xs-4">
-                    <img src="@like.Product.ImageUrl" />
-                    <a href="/artist/@like.Product.Code">@like.Product.Artist.FullNameSrt</a>
+									<a href="/product/@like.Product.Code">  <img src="@like.Product.ImageUrl" /></a>
+                    <a href="/product/@like.Product.Code">@like.Product.Artist.FullNameSrt</a>
                     <p class="extention-price">@like.Product.AmountStr</p>
                 </div>
             }

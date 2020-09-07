@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Models.Text>
+﻿@model IEnumerable<Models.Message>
 
 @{
-ViewBag.Title = "فهرست " ;
+ViewBag.Title = "فهرست پیام ها" ;
     
     Layout = "~/Views/Shared/BackEndLayout/_BackEndLayout.cshtml";
 }
@@ -12,17 +12,23 @@ ViewBag.Title = "فهرست " ;
               .Name("Grid")
               .Columns(columns =>
                   {
-        columns.Bound(model => model.Title);
-        columns.Bound(model => model.TitleEn);
-		columns.Bound(model => model.ImageUrl).Template(@<text><img src="@item.ImageUrl" height="100px" /></text>);
+        columns.Bound(model => model.User.FullName);
+        columns.Bound(model => model.Subject);
+	                  columns.Bound(model => model.MessageStatus.Title);
+
         columns.Bound(model => model.IsActive);
         columns.Bound(model => model.CreationDate);
 					columns.Bound(item => @item.Id).Title("دستورات").Filterable(false).Groupable(false)
 							.Template(@<text>
 									@Html.ActionLink("ویرایش", "Edit", new {id = @item.Id}, new {@class = "k-button"})
-								
+									@Html.ActionLink("حذف", "Delete", new {id = @item.Id}, new {@class = "k-button"})
 									</text>).Width(200);  
-		})        
+		})
+		.ToolBar(toolbar =>
+					{				
+						toolbar.Custom().Action("Create","Messages").Text("افزودن");                          
+					}
+		)         
 		.DataSource(dataSource => dataSource
 									.Server()
 							

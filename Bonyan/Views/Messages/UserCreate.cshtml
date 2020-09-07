@@ -1,0 +1,39 @@
+﻿@model ViewModels.MessageViewModel
+@{
+		ViewBag.Title = "Message";
+		Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
+}
+
+<div class="profile-body">
+	<div class="profile-name">Message To Bonian</div>
+	 
+	
+	@if (!string.IsNullOrEmpty(ViewBag.successMessage))
+	{
+		<p class="alert alert-success">@ViewBag.successMessage </p>
+	}
+
+	@using (Html.BeginForm("UserCreate", "Messages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken()
+		@Html.ValidationSummary(false, "", new { @class = "alert-danger" })
+		<div class="form-group">
+			@Html.TextBoxFor(m => m.Subject, new { @class = "login-input", @placeholder = Resources.Label.subject })
+
+		</div>
+		<div class="form-group">
+			@Html.TextAreaFor(m => m.Body, new { @class = "login-input-for-area", @placeholder = Resources.Label.body })
+		</div>
+
+		<div class="form-group">
+			@Html.Kendo().Upload().Name("fileUpload").Multiple(false)
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class=" btn  btn-default user-message">@Resources.Label.askQuestion</button>
+			<a  class=" btn btn-default user-message" id="message-list" href="/message/list">@Resources.Label.MessageList</a>
+		</div>
+
+
+	}
+</div>

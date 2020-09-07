@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using ViewModels;
@@ -9,7 +10,8 @@ using ViewModels;
 namespace Bonyan.Controllers
 {
     public class HomeController : Controller
-    { DatabaseContext db = new DatabaseContext();
+    {
+        DatabaseContext db = new DatabaseContext();
         // GET: Home
         [Authorize(Roles = "customer")]
         [Route("")]
@@ -21,7 +23,7 @@ namespace Bonyan.Controllers
             }
             HomeViewModel home = new HomeViewModel()
             {
-                Products=db.Products.Where(current=>current.IsActive && !current.IsDeleted).OrderByDescending(current => current.Order).ToList()
+                Products = db.Products.Where(current => current.IsActive && !current.IsDeleted).OrderByDescending(current => current.Order).ToList()
             };
             return View(home);
         }
@@ -56,6 +58,7 @@ namespace Bonyan.Controllers
             }
             return View();
         }
+        [Authorize(Roles = "customer")]
         [Route("search")]
         public ActionResult Search()
         {
@@ -90,6 +93,27 @@ namespace Bonyan.Controllers
                 Blogs = db.Blogs.Where(c => c.IsDeleted == false && c.IsActive).OrderByDescending(c => c.Order).ToList()
             };
             return View(about);
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult GetSearchItem(string searchValue)
+        {
+            List<SearchViewModel> searchItems = new List<SearchViewModel>();
+
+            List<Product> products = db.Products.Include(p => p.Artist).Where(c =>
+                c.Artist.FullName.Contains(searchValue) || c.Artist.FullNameEn.Contains(searchValue)).ToList();
+
+            foreach (Product product in products)
+            {
+                searchItems.Add(new SearchViewModel()
+                {
+                    Title = product.Artist.FullNameSrt,
+                    ImageUrl = product.ImageUrl,
+                    Url = "/product/" + product.Code
+                });
+            }
+            return Json(searchItems, JsonRequestBehavior.AllowGet);
         }
     }
 }

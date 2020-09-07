@@ -1,0 +1,42 @@
+﻿@model ViewModels.MessageDetailViewModel
+@{
+	ViewBag.Title = "Message";
+	Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
+}
+
+<div class="profile-body">
+	<div class="profile-name">Message List</div>
+	 
+ 
+ 
+ 
+		<div class="message-item-card">
+			<div class="message-item-subject">
+				@Model.Message.Subject
+			</div>
+			<div class="message-item-date">
+				@Model.Message.CreationDateStr
+			</div>
+			<div class="message-item-status">
+				@Model.Message.MessageStatus.TitleEn
+			</div>
+		 
+			<div class="message-item-body">
+				@Model.Message.Body
+			</div>
+		 
+			<div class="message-item-response">
+				@if (!string.IsNullOrEmpty(Model.Message.Response))
+				{
+					<p class="alert alert-success">
+						@Model.Message.Response
+					</p>
+				}
+			
+			</div>
+		</div>
+ 
+	
+	
+ 
+</div>

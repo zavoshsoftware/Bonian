@@ -1,0 +1,35 @@
+﻿@model ViewModels.MessageListViewModel
+@{
+		ViewBag.Title = "Message";
+		Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
+}
+
+<div class="profile-body">
+	<div class="profile-name">Message List</div>
+	 
+ 
+ 
+		@foreach (var message in Model.Messages)
+		{
+			<div class="message-item-card">
+				<div class="message-item-subject">
+					@message.Subject
+				</div>
+				<div class="message-item-date">
+					@message.CreationDateStr
+				</div>
+				<div class="message-item-status">
+					<i class="fa fa-exclamation-circle"></i>
+					@message.MessageStatus.TitleEn
+				</div>
+				<div class="message-item-btn">
+					<a class="btn-default" href="/message/detail/@message.Id">show detail</a>
+				</div>
+
+			</div>
+		}
+	
+	
+	<a id="bergur-button" href="/message"><i class="fa fa-4x fa-plus-circle"></i></a>
+ 
+</div>
