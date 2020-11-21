@@ -1,0 +1,46 @@
+﻿@model ViewModels.UserProfileEditViewModel
+
+@{
+    ViewBag.Title = "UserProfile Edit";
+    Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
+}
+
+
+<div class="profile-body">
+	<div class="profile-name">Edit Profile</div>
+
+	<div class="profile-main">
+	@using (Html.BeginForm("EditInfo", "Users", FormMethod.Post, new {enctype = "multipart/form-data"}))
+	{
+		@Html.AntiForgeryToken()
+
+		<div>
+			<p class="alert alert-success" id="comment-succes">@Resources.Label.SuccessChange</p>
+			<p class="alert alert-danger" id="comment-reject"></p>
+			<input type="hidden" value="@Model.Id" name="Id"/>
+		</div>
+		<div class="row profile-info">
+			<div class="col-xs-4">Fulname</div>
+			<div class="col-xs-8 text-right">
+				<input type="text" class="profile-input-edit" value="@Model.FullName" name="FullName"/>
+			</div>
+		</div>
+		<div class="row profile-info">
+			<div class="col-xs-4">Email</div>
+			<div class="col-xs-8 text-right">
+				<input type="text" class="profile-input-edit" value="@Model.Email" name="Email"/>
+			</div>
+		</div>
+		<div class="row profile-info">
+			<div class="col-xs-4">Phone</div>
+			<div class="col-xs-8 text-right">
+				<input type="text" class="profile-input-edit" value="@Model.CellNumber" name="CellNumber"/>
+			</div>
+		</div>
+		<p class="clearfix"></p>
+		<div class="logout"><button type="submit" class="btn-default">Submit</button>
+		</div>
+	}
+	</div>
+ 
+</div>

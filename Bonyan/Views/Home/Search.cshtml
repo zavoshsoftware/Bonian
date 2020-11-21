@@ -1,23 +1,33 @@
 ﻿
 @{
-    ViewBag.Title = "Search";
-    Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
+		ViewBag.Title = "Search";
+		Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
 
-<div class="profile-body">
-    <div class="profile-name">Search</div>
-    @*<a href="#"><i class="fa fa-search"></i></a>*@
-    <input type="text" id="txtSearch" placeholder="search..." class="mrt40"   onKeyUp="return searchArtist()">
-    <a href="#" class="mrl30"><i class="fa fa-close"></i></a>
-    <div class="main-search" id="main-search">
-     
-    </div>
+<div class="search-body">
+	<div class="profile-name">Search</div>
+
+	<div class="searchbox">
+		<button class="btn-search">
+
+			<img src="~/images/searchicon.png" />
+		</button>
+
+		<input type="text" id="txtSearch" placeholder="artist, media, mag items, ..."  onKeyUp="return searchArtist()">
+		<a href="#" class="mrl30">
+
+			<img src="~/images/close.png" />
+		</a>
+	</div>
+	<div class="main-search" id="main-search">
+
+	</div>
 </div>
 
 
 @section scripts{
 	<script>
-		
+
 		function searchArtist() {
 			var search = $('#txtSearch').val();
 
@@ -28,8 +38,8 @@
 				contentType: "application/json; charset=utf-8",
 				data: { "searchValue": search },
 				datatype: "json",
-				success: function(data) {
-					var result='';
+				success: function (data) {
+					var result = '';
 
 					for (var i = 0; i < data.length; i++) {
 						result = result + getSearchItem(data[i].Title, data[i].ImageUrl, data[i].Url);
@@ -37,20 +47,20 @@
 
 					$('#main-search').html(result);
 				},
-				error: function() {
+				error: function () {
 					alert("خطایی رخ داده است. لطفا مجدادا وارد سایت شوید.");
 				}
 			});
 		}
 
 
-		function getSearchItem(fullName,img,url) { 
+		function getSearchItem(fullName, img, url) {
 
 			var item = "<div class='margin-bottom15'>" +
-				"<a href='" +url+"'>"+
-				"<img src= '" +img+"' /></a>" +
-				"<a href='" +url+"'>" +fullName+"</a></div >";
-			 
+				"<a href='" + url + "'>" +
+				"<img src= '" + img + "' /></a>" +
+				"<a href='" + url + "'>" + fullName + "</a></div >";
+
 			return item;
 		}
 

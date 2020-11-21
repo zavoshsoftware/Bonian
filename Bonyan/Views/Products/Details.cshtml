@@ -1,9 +1,40 @@
 ﻿@model ViewModels.ProductDetailViewModel
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = Model.Product.Artist.FullNameSrt;
     Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
 
+@section HeadItems
+{
+	<link href="~/Content/Jplayer/css/jplayer.blue.monday.min.css" rel="stylesheet" />
+	<script src="~/Scripts/Jplayer/jquery.min.js"></script>
+	<script src="~/Scripts/Jplayer/jquery.jplayer.min.js"></script>
+	
+	<script type="text/javascript">
+		//<![CDATA[
+		$(document).ready(function(){
+
+			$("#jquery_jplayer_1").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						title: "Bubble",
+						mp3: "http://jplayer.org/audio/mp3/Miaow-07-Bubble.mp3"
+					});
+				},
+				swfPath: "../../dist/jplayer",
+				supplied: "mp3",
+				wmode: "window",
+				useStateClassSkin: true,
+				autoBlur: false,
+				smoothPlayBar: true,
+				keyEnabled: true,
+				remainingDuration: true,
+				toggleDuration: true
+			});
+		});
+//]]>
+	</script>
+}
 <div class="gallery-detail">
     <img src="@Model.Product.ImageUrl" />
     <a href="/artist/@Model.Product.Code">@Model.Product.Artist.FullNameSrt</a>
@@ -17,15 +48,60 @@
             <i class="fa fa-2x fa-heart color-red" onclick="LikeProduct('false');"></i>
         }
     </span>
-    <p class="color-silver mrt10"><span>@Model.Product.Width x @Model.Product.Height / @Model.Product.CreateYear</span></p>
+    <p class="color-silver mrt10"><span>@Model.Product.Width x @Model.Product.Height cm / @Model.SizeInInch / @Model.Product.CreateYear</span></p>
     <p class="color-silver">@Model.Product.ProductGroup.TitleSrt</p>
     <div class="mrt40 mrb40 detail-height">
+	    <div class="ddl-currency">
+		    <select>
+			    <option selected="selected">Toman</option>
+			    <option>Euro</option>
+			    <option>USD</option>
+		    </select>
+	    </div>
         <div class="price">@Model.Product.AmountStr</div>
         <button class="btn-shopping">@Resources.Label.Buy</button>
     </div>
     <h4 class="author-title">@Model.Product.Artist.FullNameSrt</h4>
-    <p class="color-silver justify">@Model.Product.Artist.SummerySrt</p>
-    <div class="readmore"><a href="/artist/@Model.Product.Code">@Resources.Label.More</a></div>
+	<p class="color-silver justify">@Model.Product.Artist.SummerySrt</p>
+	
+	<div class="mrt40 mrb40 detail-height">
+		<div class="ddl-lang">
+			<select>
+				<option selected="selected">IR</option>
+				<option>En</option>
+				<option>Ar</option>
+			</select>
+		</div>
+		<div class="audio-item">
+			<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+			<div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+				<div class="jp-type-single">
+					<div class="jp-gui jp-interface">
+						<div class="jp-controls">
+							<button class="jp-play" role="button" tabindex="0">play</button>
+						</div>
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+		
+						@*<div class="jp-time-holder">
+							<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+							<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+					
+						</div>*@
+					</div>
+		 
+				</div>
+			</div>
+			@*<audio controls="">
+				<source src="" type="audio/mp3"/>
+			</audio>*@
+		</div>
+ 
+	</div>
+	<div class="readmore"><a href="/artist/@Model.Product.Code">@Resources.Label.More</a></div>
 </div>
 @section scripts{
     <script>

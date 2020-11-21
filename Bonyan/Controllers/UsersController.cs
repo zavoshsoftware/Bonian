@@ -19,20 +19,20 @@ namespace Bonyan.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            var users = db.Users.Include(u => u.Gender).Where(u=>u.IsDeleted==false).OrderByDescending(u=>u.CreationDate).Include(u => u.Role).Where(u=>u.IsDeleted==false).OrderByDescending(u=>u.CreationDate);
+            var users = db.Users.Include(u => u.Gender).Where(u => u.IsDeleted == false).OrderByDescending(u => u.CreationDate).Include(u => u.Role).Where(u => u.IsDeleted == false).OrderByDescending(u => u.CreationDate);
             return View(users.ToList());
         }
 
         [Route("userprofile")]
         [Authorize(Roles = "customer")]
         public ActionResult Details()
-        { 
-            if(!User.Identity.IsAuthenticated)
+        {
+            if (!User.Identity.IsAuthenticated)
             {
                 return Redirect("/login");
             }
             string cellNum = User.Identity.Name;
-           
+
             if (cellNum == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -45,9 +45,70 @@ namespace Bonyan.Controllers
             UserProfileViewModel userProfile = new UserProfileViewModel()
             {
                 User = user,
-                UserProductsLikes = db.UserProductsLikes.Where(current=>current.IsActive && !current.IsDeleted && current.UserId == user.Id).ToList()
+                UserProductsLikes = db.UserProductsLikes.Where(current => current.IsActive && !current.IsDeleted && current.UserId == user.Id).ToList(),
+                Notifications = db.Notifications.Where(c=>c.UserId==user.Id&&c.IsActive&&c.IsDeleted==false).ToList()
             };
             return View(userProfile);
+        }
+
+
+        [Route("userprofile/edit")]
+        [Authorize(Roles = "customer")]
+        public ActionResult EditInfo()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/login");
+            }
+            string cellNum = User.Identity.Name;
+
+            if (cellNum == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            User user = db.Users.FirstOrDefault(current =>
+                current.IsActive && !current.IsDeleted && current.CellNum == cellNum);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            UserProfileEditViewModel userProfile = new UserProfileEditViewModel()
+            {
+                CellNumber = user.CellNum,
+                FullName = user.FullName,
+                Email = user.Email,
+                Id = user.Id
+            };
+            return View(userProfile);
+        }
+
+        [Route("userprofile/edit")]
+        [Authorize(Roles = "customer")]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult EditInfo(UserProfileEditViewModel userProfile)
+        {
+           
+
+            User user = db.Users.FirstOrDefault(current =>
+                current.IsActive && !current.IsDeleted && current.Id== userProfile.Id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+
+            user.CellNum = userProfile.CellNumber;
+            user.Email = userProfile.Email;
+            user.FullName = userProfile.FullName;
+            user.LastModifiedDate=DateTime.Now;
+
+            db.SaveChanges();
+
+            return RedirectToAction("Details");
         }
 
         // GET: Users/Create
@@ -67,8 +128,8 @@ namespace Bonyan.Controllers
         {
             if (ModelState.IsValid)
             {
-				user.IsDeleted=false;
-				user.CreationDate= DateTime.Now; 
+                user.IsDeleted = false;
+                user.CreationDate = DateTime.Now;
                 user.Id = Guid.NewGuid();
                 db.Users.Add(user);
                 db.SaveChanges();
@@ -106,7 +167,7 @@ namespace Bonyan.Controllers
         {
             if (ModelState.IsValid)
             {
-				user.IsDeleted=false;
+                user.IsDeleted = false;
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -137,9 +198,9 @@ namespace Bonyan.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             User user = db.Users.Find(id);
-			user.IsDeleted=true;
-			user.DeletionDate=DateTime.Now;
- 
+            user.IsDeleted = true;
+            user.DeletionDate = DateTime.Now;
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -155,7 +216,7 @@ namespace Bonyan.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public ActionResult EditProfile(string fulname,string email,string celnum,string password,string id)
+        public ActionResult EditProfile(string fulname, string email, string celnum, string password, string id)
         {
             try
             {
@@ -192,7 +253,7 @@ namespace Bonyan.Controllers
 
                 return Json("false", JsonRequestBehavior.AllowGet);
             }
-           
+
         }
     }
 }

@@ -5,78 +5,119 @@
     Layout = "~/Views/Shared/FrontEnd/_FrontEndLayout.cshtml";
 }
 <div class="profile-body">
-    <div class="profile-name">@Model.User.FullName</div>
-    <div class="profile-main">
-        <div>
-            <p class="alert alert-success" id="comment-succes">@Resources.Label.SuccessChange</p>
-            <p class="alert alert-danger" id="comment-reject"></p>
+	<div class="row profile-header">
+		<div class="col-xs-10 profile-name-get">@Model.User.FullName</div>
+		@*<div class="col-xs-1"></div>*@
+		<div class="col-xs-1 edit-profile-icon">
+			<a href="/userprofile/edit">
+				<i class="fa fa-pencil"></i>
+			</a>
+		</div>
+	</div>
 
-        </div>
-        <div class="row profile-info">
-            <div class="col-xs-4">Fulname</div>
-            <div class="col-xs-8 text-right">
-                <input class="profile-input" value="@Model.User.FullName" disabled id="pro_fulname" />
-                <i class="fa fa-pencil" onclick="EnableEdit('pro_fulname');"></i>
+	<div class="profile-main">
+	 
+		
+ 
+
+		<div class="row profile-info bt0">
+			<div class="col-xs-4">Fulname</div>
+			<div class="col-xs-8 text-right">
+				<input class="profile-input" value="@Model.User.FullName" disabled id="pro_fulname"/>
+				@*<i class="fa fa-pencil" onclick="EnableEdit('pro_fulname');"></i>
                 <div class="hd-field mrg-right20" id="hd_fulname">
                     <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('fulname');"><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('fulname');"><i class="fa fa-close"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="row profile-info">
-            <div class="col-xs-4">Email</div>
-            <div class="col-xs-8 text-right">
-            @*@Model.User.Email<i class="fa fa-pencil"></i>*@
-                <input class="profile-input" value="@Model.User.Email" disabled id="pro_email" />
-                <i class="fa fa-pencil" onclick="EnableEdit('pro_email');"></i>
+                </div>*@
+			</div>
+		</div>
+		<div class="row profile-info bt0">
+			<div class="col-xs-4">Email</div>
+			<div class="col-xs-8 text-right">
+				@*@Model.User.Email<i class="fa fa-pencil"></i>*@
+				<input class="profile-input" value="@Model.User.Email" disabled id="pro_email"/>
+				@*<i class="fa fa-pencil" onclick="EnableEdit('pro_email');"></i>
                 <div class="hd-field mrg-right20" id="hd_email">
                     <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('email');"><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('email');"><i class="fa fa-close"></i></button>
-                </div>
-            </div>
-        </div>
-        <div class="row profile-info">
-            <div class="col-xs-4">Phone</div>
-            <div class="col-xs-8 text-right">
-            @*@Model.User.CellNum<i class="fa fa-pencil"></i>*@
-                <input class="profile-input mrg-right19" value="@Model.User.CellNum" disabled id="pro_celnum" />
-                @*<i class="fa fa-pencil" onclick="EnableEdit('pro_celnum');"></i>*@
-                @*<div class="hd-field mrg-right20" id="hd_celnum">
+                </div>*@
+			</div>
+		</div>
+		<div class="row profile-info bt0">
+			<div class="col-xs-4">Phone</div>
+			<div class="col-xs-8 text-right">
+				@*@Model.User.CellNum<i class="fa fa-pencil"></i>*@
+				<input class="profile-input" value="@Model.User.CellNum" disabled id="pro_celnum"/>
+				@*<i class="fa fa-pencil" onclick="EnableEdit('pro_celnum');"></i>*@
+				@*<div class="hd-field mrg-right20" id="hd_celnum">
                     <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('celnum');"><i class="fa fa-check"></i></button>
                     <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('celnum');"><i class="fa fa-close"></i></button>
                 </div>*@
-            </div>
-        </div>
-        <div class="row profile-info">
-            <div class="col-xs-4">Password</div>
-            <div class="col-xs-8 text-right">
-            @*Change Password<i class="fa fa-pencil"></i>*@
-                <input class="profile-input" value="@Model.User.Password" disabled id="pro_password" type="password" />
-                <i class="fa fa-pencil" onclick="EnableEdit('pro_password');"></i>
-                <div class="hd-field mrg-right20" id="hd_password">
-                    <button class="btn btn-success no-padding pd-right5" onclick="SaveEdit('password');"><i class="fa fa-check"></i></button>
-                    <button class="btn btn-danger no-padding pd-right5" onclick="CancelEdit('password');"><i class="fa fa-close"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="profile-name">Favorits | Save | Follows</div>
-    <div class="user-extention">
-        <div class="row">
-            @foreach (var like in Model.UserProductsLikes)
-            {
-                <div class="col-xs-4">
-									<a href="/product/@like.Product.Code">  <img src="@like.Product.ImageUrl" /></a>
-                    <a href="/product/@like.Product.Code">@like.Product.Artist.FullNameSrt</a>
-                    <p class="extention-price">@like.Product.AmountStr</p>
-                </div>
-            }
-        </div>
-    </div>
-    <div class="logout"><a href="/account/LogOff" class="btn-default">Log out</a></div>
+			</div>
+		</div>
+		<div class="row profile-info btblack">
+			<div class="col-xs-4">Password</div>
+			<div class="col-xs-8 text-right">
+			 
+				<a href="/userprofile/changepass">change password</a>
+			 
+			</div>
+		</div>
+		<p class="clearfix"></p>
+		 
+
+	</div>
+	<div class="profile-name">My Artwork</div>
+	<div class="user-extention">
+		<div class="row">
+			@foreach (var like in Model.UserProductsLikes)
+			{
+				<div class="col-xs-4">
+					<a href="/product/@like.Product.Code"> <img src="@like.Product.ImageUrl"/></a>
+					<a href="/product/@like.Product.Code">@like.Product.Artist.FullNameSrt</a>
+					<p class="extention-price">@like.Product.AmountStr</p>
+				</div>
+			}
+		</div>
+	</div>
+	
+	<div class="profile-name">Notification</div>
+	<div class="user-extention">
+		<div class="row notif-list">
+			<ul>
+				@foreach (var notification in Model.Notifications)
+				{
+					<li><a data-toggle="modal" class="open-modal" data-target="#exampleModal" data-id="@notification.Message"> @notification.Title</a></li>
+				}
+			</ul>
+		</div>
+	</div>
+	<div class="logout"><a href="/account/LogOff" class="btn-default">Log out</a>
+	</div>
+</div>
+	 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+		 
+			<div id="notif-message" class="modal-body">
+		 
+			</div>
+	 
+		</div>
+	</div>
 </div>
 @section scripts{
-    <script>
+	<script>
+		$(document).on("click", ".open-modal", function () {
+			var myBookId = $(this).data('id');
+			$(".modal-content #notif-message").html( myBookId );
+			// As pointed out in comments, 
+			// it is unnecessary to have to manually call the modal.
+			// $('#addBookDialog').modal('show');
+		});
+	</script>
+    @*<script>
         function EnableEdit(id) {
             $("#" + id).removeAttr("disabled");
             $("#" + id).css('border', '1px solid #000');
@@ -151,5 +192,5 @@
                 $("#comment-succes").css('display', 'none');
             }
         }
-    </script>
+    </script>*@
 }

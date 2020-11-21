@@ -9,5 +9,18 @@
     <a href="#">@Model.Artist.FullNameSrt</a>
     <p class="mrt10 justify color-silver">@Html.Raw(Model.Artist.AboutSrt)</p>
 
-
+	
+<div class="profile-name">Similar ArtWork</div>
+	<div class="user-extention">
+		<div class="row">
+			@foreach (var product in Model.Products)
+			{
+					<div class="col-xs-4">
+						<a href="/product/@product.Code"> <img src="@product.ImageUrl" /></a>
+						<a href="/product/@product.Code">@product.Artist.FullNameSrt</a>
+						<p class="extention-price">@product.AmountStr</p>
+					</div>
+			}
+		</div>
+	</div>
 </div>

@@ -8,67 +8,77 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+	<title>@ViewBag.Title</title>
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/admin-font-awesome.css" rel="stylesheet" />
-    <link href="~/Content/style.css" rel="stylesheet" />
+	<link href="~/Content/admin-font-awesome.css" rel="stylesheet" />
+	
+	@RenderSection("HeadItems", required: false)
+	<link href="~/Content/style.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="profile-card">
-	            <div class="rfloat">
-		            <a href="/message">
-		            <img src="~/images/telegram.jpg"/>
-		            </a>
-		            @*<i class="fa fa-2x fa-send-o"></i>*@
-	            </div>
-                <div class="text-center">
-                    <a href="/home"><img src="~/images/logo.jpg" /></a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="main-body">
-                @RenderBody()
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 tabbar">
-                <div class="col-mb-3 menuitem" id="menuHome">
-                    <a href="/" class="active">
-                        <img src="~/images/home.png" />
-                    @*<i class="fa fa-2x fa-home"></i>*@
-                    </a>
-                </div>
-                <div class="col-mb-3 menuitem" id="menuSearch">
-                    <a href="/search">
-                        <img src="~/images/search.png" />
-                    @*<i class="fa fa-2x fa-search"></i>*@
-                    </a>
-                </div>
-                <div class="col-mb-3 menuitem" id="menuUser">
-                    <a href="/userprofile">
-                        <img src="~/images/user.png" />
-                    @*<i class="fa fa-2x fa-user"></i>*@
-                    </a>
-                </div>
-                <div class="col-mb-3 menuitem" id="menuAbout">
-                    <a href="/about">
-                        <img src="~/images/file.png" />
-                    @*<i class="fa fa-2x fa-file"></i>*@
-                    </a>
-                </div>
-                <div class="col-mb-3 menuitem" id="menuLike">
-                    <a href="/like">
-                        <img src="~/images/heart.png" />
-                    @*<i class="fa fa-2x fa-heart"></i>*@
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<div class="container">
+ 
+	<div class="row" style="position: relative">
+		<div class="top-space"></div>
+		<div class="profile-card">
+			<div class="rfloat">
+				<a href="/message">
+					<img src="~/images/telegram.jpg"/>
+				</a>
+				@*<i class="fa fa-2x fa-send-o"></i>*@
+			</div>
+			<div class="text-center">
+				@*<a href="/home"><img src="~/images/logo.jpg"/></a>*@
+				<a href="/home" class="log-typo">Bonian Foundation</a>
+			</div>
+		</div>
+	</div>
+	<div class="row middle-row">
+		<div class="main-body">
+			@RenderBody()
+		</div>
+	</div>
+	<div class="row" style="position: relative">
+		<div class="col-md-12 col-lg-12 col-xs-12 col-sm-12 tabbar">
+			<div class="col-mb-3 menuitem" id="menuHome">
+				<a href="/" class="active">
+					<img src="~/images/home.png"/>
+					@*<i class="fa fa-2x fa-home"></i>*@
+				</a>
+			</div>
+			<div class="col-mb-3 menuitem" id="menuSearch">
+				<a href="/search">
+					<img src="~/images/search.png"/>
+					@*<i class="fa fa-2x fa-search"></i>*@
+				</a>
+			</div>
+			<div class="col-mb-3 menuitem" id="menuUser">
+				<a href="/userprofile">
+					<img src="~/images/user.png"/>
+					@*<i class="fa fa-2x fa-user"></i>*@
+				</a>
+			</div>
+			<div class="col-mb-3 menuitem" id="menuAbout">
+				<a href="/about">
+					<img src="~/images/file.png"/>
+					@*<i class="fa fa-2x fa-file"></i>*@
+				</a>
+			</div>
+			<div class="col-mb-3 menuitem" id="menuLike">
+				<a href="/like">
+					<img src="~/images/heart.png"/>
+					@*<i class="fa fa-2x fa-heart"></i>*@
+				</a>
+			</div>
+		</div>
+		<div class="bottom-space"></div>
+	</div>
+</div>
+ 
     <script src="~/Scripts/jquery-3.1.0.min.js"></script>
     @RenderSection("scripts", required: false)
     <script type="text/javascript">

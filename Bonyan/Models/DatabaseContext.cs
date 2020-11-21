@@ -30,5 +30,6 @@ namespace Models
         public DbSet<UserProductsLike> UserProductsLikes { get; set; }
 
         public System.Data.Entity.DbSet<Models.Blog> Blogs { get; set; }
+        public System.Data.Entity.DbSet<Models.Notification> Notifications { get; set; }
     }
 }

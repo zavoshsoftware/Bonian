@@ -36,7 +36,8 @@ namespace Bonyan.Controllers
             ArtistDetailViewModel artistViewModel = new ArtistDetailViewModel()
             {
                 Artist = db.Artists.Find(product.ArtistId),
-                Product = product
+                Product = product,
+                Products = db.Products.Where(c=>c.ArtistId==product.ArtistId).ToList()
             };
             return View(artistViewModel);
         }

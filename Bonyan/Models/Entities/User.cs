@@ -16,6 +16,7 @@ namespace Models
             ActivationCodes = new List<ActivationCode>();
             UserProductsLikes = new List<UserProductsLike>();
             Messages = new List<Message>();
+            Notifications = new List<Notification>();
         }
 
 
@@ -61,6 +62,7 @@ namespace Models
         public virtual ICollection<ActivationCode> ActivationCodes { get; set; }
         public virtual ICollection<UserProductsLike> UserProductsLikes { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
+        public virtual ICollection<Notification> Notifications { get; set; }
 
         internal class configuration : EntityTypeConfiguration<User>
         {

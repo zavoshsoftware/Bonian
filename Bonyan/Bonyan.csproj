@@ -183,6 +183,17 @@
     <Content Include="Content\Admin\app.v2.min.css" />
     <Content Include="Content\Admin\Style-RTL.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Jplayer\css\jplayer.blue.monday.css" />
+    <Content Include="Content\Jplayer\css\jplayer.blue.monday.min.css" />
+    <Content Include="Content\Jplayer\image\jplayer.blue.monday.seeking.gif" />
+    <Content Include="Content\Jplayer\image\jplayer.blue.monday.video.play.png" />
+    <Content Include="Content\Jplayer\image\jplayer.blue.monday.jpg" />
+    <Content Include="Content\Jplayer\image\play.png" />
+    <Content Include="Content\Jplayer\mustache\jplayer.blue.monday.audio.playlist.html" />
+    <Content Include="Content\Jplayer\mustache\jplayer.blue.monday.audio.single.html" />
+    <Content Include="Content\Jplayer\mustache\jplayer.blue.monday.audio.stream.html" />
+    <Content Include="Content\Jplayer\mustache\jplayer.blue.monday.video.playlist.html" />
+    <Content Include="Content\Jplayer\mustache\jplayer.blue.monday.video.single.html" />
     <Content Include="Content\kendo\2017.3.913\Black\editor.png" />
     <Content Include="Content\kendo\2017.3.913\Black\imagebrowser.png" />
     <Content Include="Content\kendo\2017.3.913\Black\indeterminate.gif" />
@@ -532,6 +543,7 @@
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo.png" />
     <Content Include="images\search.png" />
+    <Content Include="images\searchicon.png" />
     <Content Include="images\telegram.jpg" />
     <Content Include="images\user.png" />
     <Content Include="Scripts\Admin\app.v2.js" />
@@ -542,6 +554,9 @@
     <Content Include="Scripts\Admin\landing.js" />
     <Content Include="Scripts\Admin\landing.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Jplayer\jquery.jplayer.min.js" />
+    <Content Include="Scripts\Jplayer\jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
@@ -700,6 +715,7 @@
     <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\ProductGroupsController.cs" />
     <Compile Include="Controllers\ProductImagesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -729,6 +745,14 @@
     <Compile Include="Migrations\202009060835316_V04.designer.cs">
       <DependentUpon>202009060835316_V04.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011210836021_V05.cs" />
+    <Compile Include="Migrations\202011210836021_V05.designer.cs">
+      <DependentUpon>202011210836021_V05.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011210852413_V06.cs" />
+    <Compile Include="Migrations\202011210852413_V06.designer.cs">
+      <DependentUpon>202011210852413_V06.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DatabaseContext.cs" />
     <Compile Include="Models\DatabaseContextInitializer.cs" />
@@ -741,6 +765,7 @@
     <Compile Include="Models\Entities\Gender.cs" />
     <Compile Include="Models\Entities\Message.cs" />
     <Compile Include="Models\Entities\MessageStatus.cs" />
+    <Compile Include="Models\Entities\Notification.cs" />
     <Compile Include="Models\Entities\Order.cs" />
     <Compile Include="Models\Entities\OrderDetail.cs" />
     <Compile Include="Models\Entities\Product.cs" />
@@ -764,8 +789,11 @@
     <Compile Include="ViewModels\MessageListViewModel.cs" />
     <Compile Include="ViewModels\MessageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NotificationCrudViewModel.cs" />
     <Compile Include="ViewModels\ProductDetailViewModel.cs" />
     <Compile Include="ViewModels\SearchViewModel.cs" />
+    <Compile Include="ViewModels\UserProfileEditViewModel.cs" />
+    <Compile Include="ViewModels\UserLikeViewModel.cs" />
     <Compile Include="ViewModels\UserProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1085,6 +1113,12 @@
     <Content Include="Views\Messages\Index.cshtml" />
     <Content Include="Views\Messages\UserCreate.cshtml" />
     <Content Include="Views\Messages\List.cshtml" />
+    <Content Include="Views\Users\EditInfo.cshtml" />
+    <Content Include="Views\Notifications\Create.cshtml" />
+    <Content Include="Views\Notifications\Delete.cshtml" />
+    <Content Include="Views\Notifications\Details.cshtml" />
+    <Content Include="Views\Notifications\Edit.cshtml" />
+    <Content Include="Views\Notifications\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1117,6 +1151,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009060835316_V04.resx">
       <DependentUpon>202009060835316_V04.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011210836021_V05.resx">
+      <DependentUpon>202011210836021_V05.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011210852413_V06.resx">
+      <DependentUpon>202011210852413_V06.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

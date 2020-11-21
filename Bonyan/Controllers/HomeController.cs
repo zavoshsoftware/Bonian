@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ViewModels;
@@ -75,7 +76,26 @@ namespace Bonyan.Controllers
             {
                 return RedirectToAction("IndexDesktop");
             }
-            return View();
+            if (!User.Identity.IsAuthenticated)
+            {
+                return Redirect("/login");
+            }
+            string cellNum = User.Identity.Name;
+
+            if (cellNum == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Where(current => current.IsActive && !current.IsDeleted && current.CellNum == cellNum).FirstOrDefault();
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            UserLikeViewModel userLike = new UserLikeViewModel()
+            {
+                UserProductsLikes = db.UserProductsLikes.Where(current => current.IsActive && !current.IsDeleted && current.UserId == user.Id).ToList(),
+            };
+            return View(userLike);
         }
         [Route("about")]
         [Authorize(Roles = "customer")]
